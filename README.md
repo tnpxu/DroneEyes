@@ -2,7 +2,8 @@
 
  
 this picture demonstrating the overall of this system. please visit this link 
-https://www.dropbox.com/s/xkknztiyc9zwq7x/Project-poster-2.jpg?dl=0
+
+[Parking Space Detection System](https://www.dropbox.com/s/xkknztiyc9zwq7x/Project-poster-2.jpg?dl=0)
 
 
 This application is a DJI phantom 3 application controller
