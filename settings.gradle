@@ -1,0 +1,2 @@
+include ':app', ':openCVLibrary2411'
+include ':dJISDKLIB'
