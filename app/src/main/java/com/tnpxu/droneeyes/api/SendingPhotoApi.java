@@ -18,6 +18,7 @@ public interface SendingPhotoApi {
             @Part("drone1\"; filename=\"drone1.jpg\" ") RequestBody file,
             @Part("description") String description,
             @Part("token") String token,
+            @Part("date") String date,
             @Part("hello") SendingPhotoData data
             );
 
@@ -27,6 +28,7 @@ public interface SendingPhotoApi {
             @Part("drone1\"; filename=\"drone1.jpg\" ") RequestBody file,
             @Part("description") String description,
             @Part("token") String token,
+            @Part("date") String date,
             @Part("hello") SendingPhotoData data
             );
 }

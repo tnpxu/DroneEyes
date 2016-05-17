@@ -135,6 +135,7 @@ public class FPVTutorialActivity extends Activity implements SurfaceTextureListe
     public ArrayList<DJIMedia> resDJIMedia = null;
 
     public String fileName;
+    public String captureDate;
 
     public EditText tokenText;
     public CheckBox registerCheckBox;
@@ -884,6 +885,8 @@ public class FPVTutorialActivity extends Activity implements SurfaceTextureListe
             fileName = Environment.getExternalStorageDirectory().getPath() + "/DroneEyes-Photo/" +
                     getMedia.getFileName().substring(0,8) + "--" + getMedia.getCreatedDate() + ".jpg";
 
+            captureDate = getMedia.getCreatedDate();
+
             getMedia.fetchMediaData(destDir, getMedia.getFileName().substring(0,8) + "--" + getMedia.getCreatedDate(), new CameraDownloadListener<String>() {
 
                 ProgressDialog dDialog;
@@ -930,10 +933,11 @@ public class FPVTutorialActivity extends Activity implements SurfaceTextureListe
     public void sendPhoto() {
 
         //take photo before sendPhoto
-        if(fileName == null){
-            showToast("filename == null");
+        if(fileName == null || captureDate == null){
+            showToast("Please fetching photo from drone before sending");
             return;
         }
+
 
         final File ph​oto = new File(fileName);
 
@@ -951,9 +955,9 @@ public class FPVTutorialActivity extends Activity implements SurfaceTextureListe
         Call<ResData> call;
         //register mode or service mode
         if(registerCheckBox.isChecked()) {
-            call = service.uploadRegister(requestBody, description, sendToken,sendingPhotoData);
+            call = service.uploadRegister(requestBody, description, sendToken,captureDate,sendingPhotoData);
         } else {
-            call = service.uploadService(requestBody, description, sendToken,sendingPhotoData);
+            call = service.uploadService(requestBody, description, sendToken,captureDate,sendingPhotoData);
         }
 
         call.enqueue(new Callback<ResData>() {
